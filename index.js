@@ -12,3 +12,24 @@ I need this code, just don't know where, perhaps should make some middleware, do
 
 Go code!
 */
+const express = require("express");
+const projects = require('./routes/Projects')
+const server = express();
+server.use(express.json());
+// Bring all our subroutes into the main application
+// (Remember, subroutes can have more children routers)
+server.use((req,res,next)=>{
+  console.log(`Method Used: ${req.method} --- URL Used: ${req.originalUrl} ---- TimeStamp: ${new Date} `)
+next();
+})
+server.use("/api/projects", projects);
+
+server.use((err, req, res, next) => {
+  console.log(err),
+    res.status(500).json({
+      message: "Internal error occured, please try again later!"
+    });
+});
+server.listen(4040, () => {
+  console.log("\n*** Server Running on http://localhost:4040 ***\n");
+});

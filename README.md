@@ -40,14 +40,17 @@ Demonstrate your understanding of this Sprint's concepts by answering the follow
 
 - [ ] Mention two parts of Express that you learned about this week.
 
+I learned about middleware and routing!
+
 - [ ] Describe Middleware?
+Middleware is an array of functions that get executed in order.
 
 - [ ] Describe a Resource?
-
+A resource is only one database table. One route should contain the operations for one table. We seperate the routes by resource.
 - [ ] What can the API return to help clients know if a request was successful?
-
+It can return a http response of 200 or 204.
 - [ ] How can we partition our application into sub-applications?
-
+We can partition our application into sub-application by using routing.
 ## Minimum Viable Product
 
 - [ ] Configure an _npm script_ named _"server"_ that will execute your code using _nodemon_. Make _nodemon_ be a development time dependency only, it shouldn't be deployed to production.

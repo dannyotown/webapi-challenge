@@ -23,19 +23,19 @@ router.get("/", async (req, res,next) => {
     }
 });
 
-// router.get('/actions/:id', validateProjectID(), async (req, res, next)=>{
-//     try{
-//         const getActions = await projectDB.getProjectActions(req.params.id)
-//         console.log(getActions)
-//         if(!getActions){
-//             res.status(404).json({error: "No Actions Avaliable"})
-//         }else{
-//             res.status(200).json(getActions)
-//         }
-//     }catch(error){
-//         next(error)
-//     }
-// })
+router.get('/actions/:id', validateProjectID(), async (req, res, next)=>{
+    try{
+        const getActions = await projectDB.getProjectActions(req.params.id)
+        console.log(getActions)
+        if(!getActions){
+            res.status(404).json({error: "No Actions Avaliable"})
+        }else{
+            res.status(200).json(getActions)
+        }
+    }catch(error){
+        next(error)
+    }
+})
 
 router.get("/:id", validateProjectID(), async (req, res) => {
     try{

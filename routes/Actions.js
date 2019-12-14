@@ -13,6 +13,14 @@ router.post("/", validateProjectID(),validateActionID() ,validateAction(), async
     }
 });
 
+router.get("/",validateProjectID(), async (req, res, next) => {
+  try {
+    res.status(200).send(await actionDB.get());
+  } catch (error) {
+    next(error);
+  }
+});
+
 router.get("/:actionID", validateProjectID(),validateActionID(), async (req, res, next) => {
   try {
     res.status(200).send(await action.get(req.params.actionDB));

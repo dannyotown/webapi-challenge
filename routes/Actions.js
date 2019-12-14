@@ -23,7 +23,7 @@ router.get("/",validateProjectID(), async (req, res, next) => {
 
 router.get("/:actionID", validateProjectID(),validateActionID(), async (req, res, next) => {
   try {
-    res.status(200).send(req.Action);
+    res.status(200).send(await action.get(req.params.actionDB));
   } catch (error) {
     next(error);
   }

@@ -23,6 +23,19 @@ router.get("/", async (req, res,next) => {
     }
 });
 
+router.get('/actions/:id', async (req, res, next)=>{
+    try{
+        const getActions = await projectDB.getProjectActions(req.params.id)
+        if(!getActions){
+            res.send(404).json({error: "No Actions Avaliable"})
+        }else{
+            res.send(200).send(getActions)
+        }
+    }catch(error){
+        next(error)
+    }
+})
+
 router.get("/:id", validateProjectID(), async (req, res) => {
     try{
         res.status(200).send(req.Project)
